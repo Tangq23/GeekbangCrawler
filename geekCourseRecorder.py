@@ -4,7 +4,7 @@ from geekCourseFileOperator import geekCourseFileOperator
 from geekCourseInfoModel import geekCourseInfoModel
 import html2text
 import re
-class geekCourseDownloader:
+class geekCourseRecorder:
     def __init__(self):
         #每个课程中的子课程
         self.uniqueCourseID = ''

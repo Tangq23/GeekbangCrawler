@@ -4,7 +4,7 @@ import random
 import json
 from geekCourseDBManager import geekCourseDBManager
 from geekCourseFileOperator import geekCourseFileOperator
-from geekCourseDownloader import geekCourseDownloader
+from geekCourseRecorder import geekCourseRecorder
 
 class geekCourseSeeker:
     def __init__(self):
@@ -67,7 +67,7 @@ class geekCourseSeeker:
 
         for courseInfo in dict['data']['list']:
             if courseInfo['id'] is not None:
-                downloader = geekCourseDownloader()
+                downloader = geekCourseRecorder()
                 infoDict = downloader.startDownloadCourse(courseInfo['id'])
                 if infoDict is not None:
                     dbManager.startRecord(infoDict)
