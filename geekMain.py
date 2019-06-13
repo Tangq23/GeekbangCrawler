@@ -1,4 +1,5 @@
 import argparse
+import os
 from geekCourseSeeker import *
 from geekCourseFileOperator import geekCourseFileOperator
 
@@ -10,7 +11,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.dlpath:
         geekCourseFileOperator = geekCourseFileOperator()
-        geekCourseFileOperator.set_rootDirPath(args.dlpath)
+        geekCourseFileOperator.set_rootDirPath(os.path.realpath(args.dlpath))
 
     if args.cid:
         courseSeeker = geekCourseSeeker()
