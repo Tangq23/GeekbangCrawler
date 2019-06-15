@@ -85,7 +85,7 @@ if __name__ == '__main__':
             isinstance(dataInfo[qualityString], str)):
                     # 视频
                     videoPath = '%s.mp4' % (os.path.join(fileOperator.get_downloadPath(), fileName))
-                    downloadCommand = 'ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
+                    downloadCommand = 'nohup ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
                     # print(downloadCommand)
                     os.system(downloadCommand)
                 else:
