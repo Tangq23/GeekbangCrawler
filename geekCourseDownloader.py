@@ -68,6 +68,7 @@ if __name__ == '__main__':
         if (dataInfo is not None) and (isinstance(dataInfo, dict) == True):
             titleName = dataInfo['COURSETITLE']
             fileName = re.sub('[\/:*?"<>|]', '-', titleName)  # 去掉非法字符
+            fileName = ''.join(fileName.split())
             if 'CONTENT' in (dict(dataInfo)).keys() and (dataInfo['CONTENT'] is not None) and (
             isinstance(dataInfo['CONTENT'], str)):
                 markdownPath = '%s.md' % (os.path.join(fileOperator.get_downloadPath(), fileName))
@@ -84,7 +85,7 @@ if __name__ == '__main__':
             isinstance(dataInfo[qualityString], str)):
                     # 视频
                     videoPath = '%s.mp4' % (os.path.join(fileOperator.get_downloadPath(), fileName))
-                    downloadCommand = 'ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
+                    downloadCommand = 'nohup ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
                     # print(downloadCommand)
                     os.system(downloadCommand)
                 else:
@@ -101,13 +102,4 @@ if __name__ == '__main__':
                             for chunk in audioRequest.iter_content(chunk_size=1024):
                                 if chunk:
                                     audio.write(chunk)
-
-
-
-
-
-
-
-
-
 
