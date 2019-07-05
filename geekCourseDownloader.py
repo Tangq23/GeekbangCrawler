@@ -63,10 +63,6 @@ if __name__ == '__main__':
     elif args.quality == 'LD':
         quality = 'LD'
 
-    if 'PRODUCTTYPE' in (dict(res[0])).keys() and res[0]["PRODUCTTYPE"] == 'c3':
-        # Screen
-        # 仅用于服务器模式
-        os.system('screen -S ffmpeg')
 
 
     for dataInfo in res:
@@ -110,8 +106,4 @@ if __name__ == '__main__':
                                     audio.write(chunk)
 
 
-    if 'PRODUCTTYPE' in (dict(res[0])).keys() and res[0]["PRODUCTTYPE"] == 'c3':
-        # Screen 关闭
-        # 仅用于服务器模式
-        os.system('screen -r ffmpeg')
-        os.system('exit')
+
