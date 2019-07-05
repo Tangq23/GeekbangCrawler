@@ -63,6 +63,12 @@ if __name__ == '__main__':
     elif args.quality == 'LD':
         quality = 'LD'
 
+    if 'PRODUCTTYPE' in (dict(res[0])).keys() and res[0]["PRODUCTTYPE"] == 'c3':
+        # Screen
+        # 仅用于服务器模式
+        os.system('screen -S ffmpeg')
+
+
     for dataInfo in res:
 
         if (dataInfo is not None) and (isinstance(dataInfo, dict) == True):
@@ -85,7 +91,7 @@ if __name__ == '__main__':
             isinstance(dataInfo[qualityString], str)):
                     # 视频
                     videoPath = '%s.mp4' % (os.path.join(fileOperator.get_downloadPath(), fileName))
-                    downloadCommand = 'nohup ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
+                    downloadCommand = 'ffmpeg -i %s %s '%(dataInfo[qualityString],videoPath)
                     # print(downloadCommand)
                     os.system(downloadCommand)
                 else:
@@ -103,3 +109,9 @@ if __name__ == '__main__':
                                 if chunk:
                                     audio.write(chunk)
 
+
+    if 'PRODUCTTYPE' in (dict(res[0])).keys() and res[0]["PRODUCTTYPE"] == 'c3':
+        # Screen 关闭
+        # 仅用于服务器模式
+        os.system('screen -r ffmpeg')
+        os.system('exit')
