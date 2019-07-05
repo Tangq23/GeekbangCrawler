@@ -19,17 +19,15 @@ if __name__ == '__main__':
     parser.add_argument("-dp", "--dlpath", help="download path,本地保存地址,默认程序根目录")
     parser.add_argument("-q", "--quality", help="视频质量,默认HD,可选 SD LD HD")
     args = parser.parse_args()
-
+    fileOperator = geekCourseFileOperator()
     if args.dbpath is None :
         print('请输入数据库地址')
         exit()
 
     if args.dlpath:
-        geekCourseFileOperator = geekCourseFileOperator()
-        geekCourseFileOperator.set_rootDirPath(args.dlpath)
+        fileOperator.set_rootDirPath(args.dlpath)
 
     dbPath = args.dbpath
-    fileOperator = geekCourseFileOperator()
 
     if fileOperator.filePathExist(dbPath) is False:
         print('数据库地址不存在')
