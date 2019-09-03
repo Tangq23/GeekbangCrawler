@@ -80,12 +80,15 @@ class geekCourseDBManager(object):
         videoLDURL = ''
         videoLDSize = ''
         if productType == 'c3':
-            videoHDURL = infoDict['video_media_map']['hd']['url']
-            videoHDSize = infoDict['video_media_map']['hd']['size']
-            videoSDURL = infoDict['video_media_map']['sd']['url']
-            videoSDSize = infoDict['video_media_map']['sd']['size']
-            videoLDURL = infoDict['video_media_map']['ld']['url']
-            videoLDSize = infoDict['video_media_map']['ld']['size']
+            if 'url' in dict(infoDict['video_media_map']['hd']).keys():
+                videoHDURL = infoDict['video_media_map']['hd']['url']
+                videoHDSize = infoDict['video_media_map']['hd']['size']
+            if 'url' in dict(infoDict['video_media_map']['sd']):
+                videoSDURL = infoDict['video_media_map']['sd']['url']
+                videoSDSize = infoDict['video_media_map']['sd']['size']
+            if 'url' in dict(infoDict['video_media_map']['ld']):
+                videoLDURL = infoDict['video_media_map']['ld']['url']
+                videoLDSize = infoDict['video_media_map']['ld']['size']
 
 
 
